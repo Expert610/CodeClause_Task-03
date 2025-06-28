@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='Login-Style.css')}}">
+    <title>Url Shortener/Login</title>
+</head>
+<body>
+    <div class="container">
+     <h2>Login Now </h2>
+     <form method="post" action="{{ url_for('login') }}">
+      <div class="form">
+        <input type="email" name="username"  placeholder="Enter username" required  maxlength="23" minlength="4" title="Email required.">
+      </div>
+      <div class="form">
+        <input type="password" placeholder="Enter Password" name="password" required  maxlength="25" minlength="8" title="password required.">
+
+      </div>
+      <div class="form">
+        <button type="submit"> Login </button>
+      </div>
+      
+     </form>
+     <br>
+     
+    </div> 
+
+    
+</body>
+</html>

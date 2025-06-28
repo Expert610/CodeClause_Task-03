@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static' ,filename='Registration-Style.css')}}">
+    <title>Url Shortener/Sign Up</title>
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+    <div class="container">
+     <h2>Sign Up </h2>
+     <form method="post" action="{{ url_for('register') }}">
+      <div class="form">
+        <label for="username">Username:</label>
+        <input type="email"  name="username"  placeholder="Enter Username" required  maxlength="23" minlength="4" title="email required.">
+      </div>
+      <div class="form">
+        <label for="password">Password:</label>
+        <input type="password"  name="password"   placeholder="Enter Password"  required  maxlength="25" minlength="8" title="password required.">
+
+      </div>
+      <label for="phone">Phone Number:</label>
+      <div class="form" id="cc">
+        <label for="numbercode">Country Code:</label><br>
+        <select id="cc" name="cc">
+          <option value="+92" selected>+92 (Pakistan)</option>
+          <option value="+91">+91 (India)</option>
+          <option value="+1">+1 (USA)</option>
+          <option value="+44">+44 (UK)</option>
+          <option value="other"> other</option>
+
+        </select><br>
+        <label for="number">Number:</label>
+        <input type="tel"  name="number"  id="number"  placeholder="03..."   required  maxlength="15" minlength="10" title="phone required.">
+      </div>
+      <div>
+      
+        <label for="gender">Gender:</label>
+        
+        <input type="radio" id="male" name="gender"  value="Male" checked >
+        <label for="male">Male</label>
+        
+        
+        <input type="radio" id="female" name="gender"  value="Female">
+        <label for="female">Female</label>
+        
+        
+        <input type="radio" id="other" name="gender"   value="other">
+        <label for="other">Other</label>
+      </div><br>
+      <div class="form" >
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" min="1950-01-01"  required>
+        <script>
+          const today = new Date().toISOString().split('T')[0];
+          document.getElementById('dob').setAttribute('max',today);
+          document.getElementById('dob').value=today;
+        
+          
+        </script>
+
+      </div>
+      <div class="form">
+        <button type="submit"> Sign Up </button>
+      </div>
+      
+     </form>
+     
+    </div> 
+
+    
+</body>
+</html>
